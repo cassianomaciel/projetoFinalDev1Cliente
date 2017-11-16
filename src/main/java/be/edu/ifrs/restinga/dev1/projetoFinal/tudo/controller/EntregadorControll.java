@@ -24,7 +24,7 @@ public class EntregadorControll
     EntregadorDAO entregadorDAO;
     
   
-    @RequestMapping(path="/entregador", method = RequestMethod.POST)
+    @RequestMapping(path="/api/entregador", method = RequestMethod.POST)
     @ResponseStatus(HttpStatus.CREATED)
     public Entregador inserir(@RequestBody Entregador entregador)
     {
@@ -33,19 +33,19 @@ public class EntregadorControll
         return entregadorSalvo;
     }   
     
-    @RequestMapping(path="/entregador/{id}", method = RequestMethod.GET)
+    @RequestMapping(path="/api/entregador/{id}", method = RequestMethod.GET)
     public Entregador encontrar(@PathVariable int id)
     {
         return entregadorDAO.findOne(id); 
     }
     
-    @RequestMapping(path = "/entregadores", method = RequestMethod.GET)
+    @RequestMapping(path = "/api/entregadores", method = RequestMethod.GET)
     public Iterable<Entregador> listar() 
     {
         return entregadorDAO.findAll();
     }
     
-    @RequestMapping(path= "/entregador/{id}", method = RequestMethod.DELETE)
+    @RequestMapping(path= "/api/entregador/{id}", method = RequestMethod.DELETE)
     @ResponseStatus(HttpStatus.OK)
     public void apagar(@PathVariable int id) 
     {
@@ -55,7 +55,7 @@ public class EntregadorControll
         }
     }
         
-    @RequestMapping(path = "/entregador/{id}", method = RequestMethod.PUT)
+    @RequestMapping(path = "/api/entregador/{id}", method = RequestMethod.PUT)
     @ResponseStatus(HttpStatus.OK)
     public void atualizar(@PathVariable int id, @RequestBody Entregador entregador)
     {
@@ -66,7 +66,7 @@ public class EntregadorControll
         }
     }
     
-    @RequestMapping(path = "/entregador/pesquisar/nome", method = RequestMethod.GET)
+    @RequestMapping(path = "/api/entregador/pesquisar/nome", method = RequestMethod.GET)
     public Iterable<Entregador> pesquisaPorNome(
             @RequestParam(required = false) String igual,
             @RequestParam(required = false) String contem) {

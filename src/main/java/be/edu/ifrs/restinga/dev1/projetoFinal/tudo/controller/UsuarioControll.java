@@ -23,7 +23,7 @@ public class UsuarioControll
     @Autowired
     UsuarioDAO usuarioDAO;
   
-    @RequestMapping(path="/usuario", method = RequestMethod.POST)
+    @RequestMapping(path="/api/usuario", method = RequestMethod.POST)
     @ResponseStatus(HttpStatus.CREATED)
     public Usuario inserir(@RequestBody Usuario usuario)
     {
@@ -32,7 +32,7 @@ public class UsuarioControll
         return usuarioSalvo;
     }   
     
-    @RequestMapping(path = "/usuario/pesquisar/nome", method = RequestMethod.GET)
+    @RequestMapping(path = "/api/usuario/pesquisar/nome", method = RequestMethod.GET)
     public Iterable<Usuario> pesquisaPorNome(
             @RequestParam(required = false) String igual,
             @RequestParam(required = false) String contem) {
@@ -43,30 +43,30 @@ public class UsuarioControll
         }
     }
     
-    @RequestMapping(path = "/produtos/pesquisar/cpf", method = RequestMethod.GET)
+    @RequestMapping(path = "/api/produtos/pesquisar/cpf", method = RequestMethod.GET)
     public Iterable<Usuario> pesquisaPorMarcas(@RequestParam(required = false) String igual) {
             return usuarioDAO.findByCpf(igual);
     }
     
-    @RequestMapping(path="/usuario/{id}", method = RequestMethod.GET)
+    @RequestMapping(path="/api/usuario/{id}", method = RequestMethod.GET)
     public Usuario encontrar(@PathVariable int id)
     {
         return usuarioDAO.findOne(id); 
     }
     
-    @RequestMapping(path="/usuario/pesquisar/email", method = RequestMethod.GET)
+    @RequestMapping(path="/api/usuario/pesquisar/email", method = RequestMethod.GET)
     public Iterable<Usuario> pesquisarPorEmail(@RequestParam String email)
     {
         return usuarioDAO.findByEmailContainingOrderByNome(email);
     }
     
-    @RequestMapping(path = "/usuarios", method = RequestMethod.GET)
+    @RequestMapping(path = "/api/usuarios", method = RequestMethod.GET)
     public Iterable<Usuario> listar() 
     {
         return usuarioDAO.findAll();
     }
     
-    @RequestMapping(path= "/usuario/{id}", method = RequestMethod.DELETE)
+    @RequestMapping(path= "/api/usuario/{id}", method = RequestMethod.DELETE)
     @ResponseStatus(HttpStatus.OK)
     public void apagar(@PathVariable int id) 
     {
@@ -76,7 +76,7 @@ public class UsuarioControll
         }
     }
         
-    @RequestMapping(path = "/usuario/{id}", method = RequestMethod.PUT)
+    @RequestMapping(path = "/api/usuario/{id}", method = RequestMethod.PUT)
     @ResponseStatus(HttpStatus.OK)
     public void atualizar(@PathVariable int id, @RequestBody Usuario usuario)
     {
